@@ -3,8 +3,6 @@ var browserSync = require('browser-sync');
 
 var app = express();
 
-
-
 app.use(express.static("client"));
 
 var bs = browserSync.create();
