@@ -1,0 +1,66 @@
+.container-fluid {
+  margin: auto;
+}
+
+.content {
+  text-align: center;
+  border-left: 1px gray solid;
+}
+
+.content.logo {
+  font: 48pt "Dancing Script", cursive;
+  margin: auto;
+}
+
+.blank {
+  height: 10%;
+}
+
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
+  margin: auto;
+  background-color: lightgray;
+}
+
+.form-signin, .form-signin {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.form-signin-heading {
+  margin-bottom: 40px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.formLink {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.content .logo {
+  position: relative;
+}
