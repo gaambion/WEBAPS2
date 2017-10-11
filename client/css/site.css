@@ -33,3 +33,7 @@ footer{
   bottom: 0;
   text-align: center;
 }
+.card .card-img-top {
+  height: 300px;
+  width: 225px;
+}
