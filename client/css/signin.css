@@ -4,7 +4,12 @@
 
 .content {
   text-align: center;
-  border-right: 1px gray solid;
+  border-left: 1px gray solid;
+}
+
+.content.logo {
+  font: 48pt "Dancing Script", cursive;
+  margin: auto;
 }
 
 .blank {
@@ -56,9 +61,6 @@
   margin-bottom: 40px;
 }
 
-
-#logo2 {
-  font: 48pt "Dancing Script", cursive;
-  text-align: center;
-
+.content .logo {
+  position: relative;
 }
