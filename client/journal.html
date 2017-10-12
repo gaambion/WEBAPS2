@@ -17,17 +17,17 @@
 </head>
 
 <body>
-    <!--Sample Nav Bar Only-->
-<header>
-    <h1>Quill</h1>
-  <nav>
-    <ul>
-      <li ><a href="journal.html">Journal</a></li>
-      <li><a href="movie_list.html">Movies</a></li>
-      <li><a href="#">Gaius Ambion</a></li>
-    </ul>
-  </nav>
-</header>
+
+    <header>
+        <h1>Quill</h1>
+        <nav>
+            <ul>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="movie_list.html">Movies</a></li>
+                <li><a href="#">Gaius Ambion</a></li>
+            </ul>
+        </nav>
+    </header>
 
 
     <!--Filter Bar-->
@@ -101,7 +101,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                         <textarea class="form-control" rows="5" id="newEntry"></textarea>
+                        <textarea class="form-control" rows="5" id="newEntry"></textarea>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -112,8 +112,11 @@
         </div>
     </div>
     <footer>
-      Copyright Quill 2017. All Rights Reserved.
+        Copyright Quill 2017. All Rights Reserved.
     </footer>
+
+
+    <div id="overlay" class="modal fade"></div>
 
     <!--JAVASCRIPT-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -134,6 +137,7 @@
                 console.log("Modal Close");
             });
 
+             $("#addEntryModal").modal({backdrop: true});
 
         });
     </script>
