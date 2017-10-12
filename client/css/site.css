@@ -1,15 +1,14 @@
+body{
+  background-color: #F9EAE1;
+}
+nav{
+  background-color: #6C0E23;
+  color: white;
 
-div nav{
-  background-color: #66B9BF;
 }
 div{
-  background-color: lightgray;
-  border: 1px gray solid;
   text-align: center;
 }
-
-
-
 nav a {
   color: black;
 }
@@ -17,6 +16,8 @@ nav ul{
   list-style-type: none;
   margin: 0;
   padding: 0;
+  list-style: none;
+  float: right;
 }
 
 nav ul li{
@@ -25,13 +26,14 @@ nav ul li{
 }
 
 footer{
-  background-color: #66B9BF;
+  background-color: #44403e;
   float: left;
-  position: absolute;
+  position: relative;
   width: 100%;
   padding: 0.5em;
   bottom: 0;
   text-align: center;
+  color: white;
 }
 .card .card-img-top {
   height: 300px;
