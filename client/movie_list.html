@@ -6,17 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
   <title>Document</title>
 </head>
 <body>
-      <nav>
-        Quill
-        <ul>
-          <li ><a href="#">Journal</a></li>
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
-      </nav>
+
+  <header>
+    <h1>Quill</h1>
+    <nav>
+      <ul>
+        <li ><a href="journal.html">Journal</a></li>
+        <li><a href="movie_list.html">Movies</a></li>
+        <li><a href="#">Gaius Ambion</a></li>
+      </ul>
+    </nav>
+  </header>
+
 <div class="container">
   <div class="row col-md-12 mt-4">
     <div class="card-deck mx-auto ">
@@ -142,6 +148,34 @@
       </div>
     </div>
 </div>
+
+<!--Floating Button-->
+<div class="btn-group">
+    <button type="button" id="addEntry" class="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised " data-toggle="modal" data-target="#exampleModal">
+      Add
+    </button>
+</div>
+
+<!--Modal-->
+<div class="modal" id="addEntryModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Movie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <footer>
   Copyright Quill 2017. All Rights Reserved.
 </footer>
@@ -163,6 +197,19 @@
       }
     })
   });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#addEntry").click(function() {
+            $("#addEntryModal").show();
+            console.log("Modal Launch");
+        });
+        $(".close").click(function() {
+            $("#addEntryModal").hide();
+            console.log("Modal Close");
+        });
+
+    });
 </script>
 </body>
 </html>
