@@ -100,11 +100,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Modal body text goes here.</p>
+                    <form>
+                         <textarea class="form-control" rows="5" id="newEntry"></textarea>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary closeModal">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -125,6 +127,13 @@
                 $("#addEntryModal").hide();
                 console.log("Modal Close");
             });
+
+
+            $(".closeModal").click(function() {
+                $("#addEntryModal").hide();
+                console.log("Modal Close");
+            });
+
 
         });
     </script>

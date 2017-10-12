@@ -21,3 +21,8 @@
     margin: 32px;
 
 }
+
+#newEntry{
+    width: 75%;
+    border-radius: 4px;
+}
