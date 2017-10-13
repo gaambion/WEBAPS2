@@ -48,6 +48,7 @@ header nav ul li{
 
 header nav ul li:hover {
   text-decoration: none;
+  color: white;
 }
 
 footer{
@@ -87,5 +88,5 @@ footer{
     background-color: #F19F4E;
     bottom: 0;
     margin: 32px;
-
+    color: white;
 }
