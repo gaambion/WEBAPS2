@@ -48,6 +48,7 @@ header nav ul li{
 
 header nav ul li:hover {
   text-decoration: none;
+  color: white;
 }
 
 footer{
