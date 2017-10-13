@@ -15,18 +15,25 @@ header:after{
 
 header h1 {
     float: left;
+    font: 24pt "Dancing Script", cursive;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-bottom: 2px;
 }
 
 
 header nav {
   float: right;
 }
+
 div{
   text-align: center;
 }
+
 header nav a {
     color: white;
 }
+
 header nav ul{
   list-style-type: none;
   margin-top: 13px;
@@ -36,6 +43,11 @@ header nav ul{
 header nav ul li{
   display: inline;
   padding: 5px;
+  text-decoration: none;
+}
+
+header nav ul li:hover {
+  text-decoration: none;
 }
 
 footer{
