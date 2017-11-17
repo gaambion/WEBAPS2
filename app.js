@@ -1,7 +1,12 @@
 var express = require('express');
 var browserSync = require('browser-sync');
+const path = require('path');
 
 var app = express();
+
+app.get('/', function(req, res) {
+	res.sendFile(path.join(__dirname, './client', 'journal.html'));
+});
 
 app.use(express.static("client"));
 

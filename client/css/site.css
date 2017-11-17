@@ -59,6 +59,15 @@ footer{
   color: white;
   margin-top: 13px;
 }
+
+li{
+    margin: 10px;
+}
+
+a:hover{
+    color: whitesmoke;
+}
+
 .card .card-img-top {
   height: 300px;
   width: 225px;
