@@ -1,6 +1,11 @@
-
+label{
+    margin-left: 2px;
+}
+.form-group{
+    text-align: left;
+}
 .card-header{
-    background-color: #F9CF00
+    background-color: #F19F4E
 }
 
 .shadowed
@@ -12,6 +17,12 @@
 .modal-header{
     background-color: #F19F4E;
 }
+
+
+.modal{
+    top:10%;
+}
+
 
 #addEntry{
     z-index: 999;
@@ -35,7 +46,7 @@
 	position: absolute;
 	background-color: black;
     color: aliceblue;
-	opacity: 0.7;
+	opacity: 0.85;
 	cursor: pointer;
     z-index: 100;
 }

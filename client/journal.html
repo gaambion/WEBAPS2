@@ -114,11 +114,32 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <textarea class="form-control" rows="5" id="newEntry"></textarea>
+                        <div class="form-group">
+                            <label for="entryTitle">Title</label>
+                            <input type="text" class="form-control" id="entryTitle" placeholder="My Entry">
+                          </div>
+
+                        <div class="form-group">
+                            <label for="newEntry">Body</label>
+                            <textarea class="form-control" rows="5" id="newEntry"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="select_category">Category</label>
+                            <select class="form-control " id="select_category">
+                                <option>Thoughts</option>
+                                <option>Travel</option>
+                                <option>School</option>
+                                <option>Love</option>
+                                <option>Friends</option>
+                                <option>Notes</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary closeModal">Save changes</button>
+                    <button type="button" class="btn btn-primary closeModal">Save</button>
                     <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -157,8 +178,6 @@
                 $("#overlay").hide();
                 console.log("Modal Close");
             });
-
-
 
         });
     </script>
