@@ -85,7 +85,7 @@
     <div class="card w-50 mx-auto mt-4 shadowed">
         <h3 class="card-header  mt-0">
         Date of Entry
-     </h3>
+        </h3>
         <div class="row ml-2 mr-2">
             <div class="col-sm-6 mt-2 text-sm-left">Category</div>
             <div class="col-sm-6 mt-2 text-sm-right">November 17, 2017</div>
@@ -101,13 +101,13 @@
         </button>
     </div>
 
-    <!--Modal-->
+    <!--Add Entry Modal-->
 
     <div class="modal " id="addEntryModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Date Today</h5>
+                    <h5 class="modal-title">November 17, 2017</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -145,6 +145,56 @@
             </div>
         </div>
     </div>
+
+    <!--Open Entry Modal-->
+
+    <div class="modal modal-ku" id="viewEntry">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title">This is Untitled.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                            <div class="row form-group">
+                                <div class="col-sm-2 text-sm-left">
+                                    <label for="select_category">Category</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-control col-sm-7" id="select_category">
+                                        <option>Thoughts</option>
+                                        <option>Travel</option>
+                                        <option>School</option>
+                                        <option>Love</option>
+                                        <option>Friends</option>
+                                        <option>Notes</option>
+                                        <option>Others</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 text-sm-right">November 17, 2017</div>
+                            </div>
+                        <div class="form-group">
+                            <label for="editEntry">Body</label>
+                            <textarea class="form-control edit-body" rows="10" id="editEntry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum. </textarea>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary closeModal">Save</button>
+                    <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Footer-->
     <footer>
         Copyright Quill 2017. All Rights Reserved.
     </footer>
@@ -157,28 +207,32 @@
         $(document).ready(function() {
 
             $("#overlay").hide();
+
             $("#addEntry").click(function() {
-
-
-            $("#overlay").show();
-            $("#addEntryModal").show();
-
+                $("#overlay").show();
+                $("#addEntryModal").show();
                 console.log("Modal Launch");
             });
 
             $(".close").click(function() {
                 $("#addEntryModal").hide();
                 $("#overlay").hide();
+                $("#viewEntry").hide();
                 console.log("Modal Close");
             });
 
-
             $(".closeModal").click(function() {
                 $("#addEntryModal").hide();
+                $("#viewEntry").hide();
                 $("#overlay").hide();
                 console.log("Modal Close");
             });
 
+            $(".shadowed").click(function() {
+                $("#overlay").show();
+                $("#viewEntry").show();
+                console.log("Card Clicked");
+            });
         });
     </script>
 
