@@ -71,7 +71,7 @@ fluffy.save(function (err, fluffy) {
 Kitten.find({ name: /^fluff/ }, callback);
 */
 
-
+/*
 Kitten.find(function (err, kittens) {
   if (err) return console.error(err);
     console.log("KITTENS LIST------------------");
@@ -88,7 +88,3 @@ console.log(Kitten.db.name); // myDatabase
 
 //server
 var appServer = new Server(4000, router);
-
-
-
-

@@ -11,16 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "browser-sync": "^2.18.13",
-<<<<<<< HEAD
     "config": "^1.28.1",
     "express": "^4.16.1",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.4"
-=======
+    "mongoose": "^4.13.4",
     "express": "^4.16.1"
   },
   "devDependencies": {
     "font-awesome": "^4.7.0"
->>>>>>> refs/remotes/origin/master
   }
 }
