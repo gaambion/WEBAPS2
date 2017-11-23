@@ -12,5 +12,8 @@
   "dependencies": {
     "browser-sync": "^2.18.13",
     "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "font-awesome": "^4.7.0"
   }
 }
