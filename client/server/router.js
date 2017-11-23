@@ -23,8 +23,8 @@ router.post('/notes', function(req, res){
 
 //routes
 
-/*router.post('/standup', noteCtrl.create);
-router.get('/standup/:id', noteCtrl.getById);
+router.post('/journal', noteCtrl.create);
+/*router.get('/standup/:id', noteCtrl.getById);
 router.get('/standup', noteCtrl.getAll);
 router.put('/standup/:id', noteCtrl.update);
 router.patch('/standup/:id', noteCtrl.update);

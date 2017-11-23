@@ -1,34 +1,37 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 //var methodOverride = require('method-override');
-
+var Journal = require('./journalEntry.js');
 function Server(port, router)
 {
-   // var mongoose = require('mongoose');
-    var Note = require('./note.js');
+    var mongoose = require('mongoose');
+
     var router = require('./router.js');
 
     this.port = port;
 
-	this.router = router;
-
+    mongoose.connect('mongodb://localhost/journal', {useMongoClient: true});
+    console.log("Done Connecting");
     var app = express();
 
     //routers
-  /*  var router = express.Router();
-    router.get('/notes', function(req, res){
+    var router = express.Router();
+    router.get('/journal', function(req, res){
 
-        var note1 = new Note();
-        note1.subect = "adweb";
-        note1.notes = "hello world";
-        return res.status(200).json(note1);
-    });*/
+        var entry = new Journal();
+        entry.title = "Untitled";
+        entry.body = "hello world";
+        entry.category = "Life";
+        entry.date = "11/24/2017"
+        console.log("[SERVER] New Journal Entry");
+        return res.status(200).json(entry);
+    });
 
-
-    app.use(bodyParser.urlencoded({extended: true}));
-    app.use(bodyParser.json());
-    app.use('/api', this.router);
     app.use(express.static("client"));
+    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.json());
+    app.use('/api', router);
+
 
 
     app.listen(port,function(){
