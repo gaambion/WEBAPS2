@@ -44,6 +44,7 @@ exports.getById = function(req, res, next) {
 //GET /journal
 exports.getAll = function(req, res) {
 
+    console.log("GETTING ALL ENTRIES");
     Journal.find(function(err, data) {
         if(err) return console.error(err);
 

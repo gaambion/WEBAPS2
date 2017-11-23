@@ -1,33 +1,51 @@
 var express = require('express');
-var browserSync = require('browser-sync');
-var bodyParser = require('body-parser');
-
-var Note = require('./note.js');
-var noteCtrl = require('./controller/journal.server.controller.js');
-
+var Journal = require('./journalEntry.js');
+var journalCtrl = require('./controller/journal.server.controller.js');
 //routers
 var router = express.Router();
-/*
+
+function postEntry(){
 router.post('/notes', function(req, res){
 
-    var note1 = new Note();
-    note1.subect = "adweb";
-    note1.notes = "hello world";
-    //return res.json(note1);
+    var entry = new Journal();
+        entry.title = "Untitled";
+        entry.body = "hello world";
+        entry.category = "Life";
+        entry.date = "11/24/2017"
+        console.log("[SERVER] New Journal Entry");
 
-    return noteCtrl.create(req, res);
+    return journalCtrl.create(req, res);
 });
+}
 
-*/
 
 
 //routes
 
-router.post('/journal', noteCtrl.create);
-/*router.get('/standup/:id', noteCtrl.getById);
-router.get('/standup', noteCtrl.getAll);
-router.put('/standup/:id', noteCtrl.update);
-router.patch('/standup/:id', noteCtrl.update);
-router.delete('/standup/:id', noteCtrl.delete);*/
+//router.post('/journal', journalCtrl.create);
+//router.get('/standup/:id', journalCtrl.getById);
+router.get('/journalAll', journalCtrl.getAll);
+/*
+router.put('/standup/:id', journalCtrl.update);
+router.patch('/standup/:id', journalCtrl.update);
+router.delete('/standup/:id', journalCtrl.delete);*/
+
+router.use(function(err, req, res, next) {
+    logger.error(err);
+    next(err);
+});
+
+router.use(function(err, req, res, next) {
+    if(req.xhr) {
+        res.status(500).json({ error: "Server exception occurred." });
+    } else {
+        next(err);
+    }
+});
+
+router.use(function(err, req, res, next) {
+    res.status(err.statusCode || 500).json({ error: err });
+});
 
 module.exports = router;
+

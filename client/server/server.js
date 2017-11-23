@@ -6,7 +6,7 @@ function Server(port, router)
 {
     var mongoose = require('mongoose');
 
-    var router = require('./router.js');
+    var postFunc = require('./router.js');
 
     this.port = port;
 
@@ -16,6 +16,8 @@ function Server(port, router)
 
     //routers
     var router = express.Router();
+
+    //postEntry();
     router.get('/journal', function(req, res){
 
         var entry = new Journal();

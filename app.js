@@ -20,14 +20,14 @@ bs.init({
   files: ["client/**"]
 });
 
-/*//database
+//database
 var options = {
     keepAlive: 1,
     useMongoClient: true
 };
 
-mongoose.connect(config.get('db'), options);
-
+//mongoose.connect(config.get('db'), options);
+/*mongoose.connect('mongodb://localhost/journal', {useMongoClient: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
