@@ -35,6 +35,7 @@ db.once('open', function() {
 });*/
 
 mongoose.connect('mongodb://localhost/test', {
+    keepAlive: 1,
     useMongoClient: true,
 });
 var db = mongoose.connection;
@@ -43,6 +44,7 @@ db.once('open', function() {
     console.log("Connection successful");
 });
 
+/*
 //Sample
 var kittySchema = mongoose.Schema({
     name: String
@@ -72,8 +74,17 @@ Kitten.find({ name: /^fluff/ }, callback);
 
 Kitten.find(function (err, kittens) {
   if (err) return console.error(err);
+    console.log("KITTENS LIST------------------");
   console.log(kittens);
+
 })
+
+console.log(Kitten.db.host); // localhost
+console.log(Kitten.db.port); // 27017
+console.log(Kitten.db.name); // myDatabase
+*/
+
+
 
 //server
 var appServer = new Server(4000, router);

@@ -1,4 +1,4 @@
-var Note = require('../model/journal.server.model.js');
+var Journal = require('../model/journal.server.model.js');
 //create
 
 //POST /journal
@@ -28,7 +28,7 @@ exports.getById = function(req, res, next) {
     if(!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send();
     } else {
-        StandUp.findById(id, function(err, data) {
+        Journal.findById(id, function(err, data) {
             if(err) return next(err);
 
             if(data) {
@@ -44,26 +44,26 @@ exports.getById = function(req, res, next) {
 //GET /journal
 exports.getAll = function(req, res) {
 
-    StandUp.find(function(err, data) {
+    Journal.find(function(err, data) {
         if(err) return console.error(err);
 
         res.status(200).json(data);
     });
 }
 
-//PUT /standup/:id
+//PUT /journal/:id
 exports.update = function(req, res) {
 
     var id = req.params.id;
-    var standup = req.body;
+    var journal = req.body;
 
-    StandUp.findById(id, function(err, entry) {
+    Journal.findById(id, function(err, entry) {
         if(err) return console.error(err);
 
-        entry.title = standup.title;
-        entry.body = standup.body;
-        entry.category = standup.category;
-        entry.date = standup.date;
+        entry.title = journal.title;
+        entry.body = journal.body;
+        entry.category = journal.category;
+        entry.date = journal.date;
 
         entry.save(function(err, data) {
             if(err) return console.error(err);
@@ -74,10 +74,10 @@ exports.update = function(req, res) {
 
 }
 
-//DELETE /standup/:id
+//DELETE /journal/:id
 exports.delete = function(req, res) {
     var id = req.params.id;
-    StandUp.findByIdAndRemove(id, function(err, data) {
+    Journal.findByIdAndRemove(id, function(err, data) {
         if(err) return console.error(err);
 
         res.status(204).send();
