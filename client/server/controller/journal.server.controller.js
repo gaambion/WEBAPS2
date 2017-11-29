@@ -3,7 +3,7 @@ var Journal = require('../model/journal.server.model.js');
 
 //POST /journal
 exports.create = function(req, res){
-    var journal = req.body;
+  /*  var journal = req.body;
     var entry = new Journal({
         title: journal.title,
         body: journal.body,
@@ -15,10 +15,35 @@ exports.create = function(req, res){
         if(err) return console.error(err);
     });
 
+    res.status(204).send();*/
+
+    console.log(req.body);
     res.status(204).send();
 
 }
 
+//GET /journal
+exports.getAll = function(req, res) {
+
+    /*console.log("GETTING ALL ENTRIES");
+    Journal.find(function(err, data) {
+        if(err) return console.error(err);
+
+        res.status(200).json(data);
+    });*/
+
+    var entry = [{
+        title: "Animo",
+        body: "La Salle",
+        category: "school",
+        date: "Nov. 29, 2017",
+    }];
+
+    res.status(200).send(entry);
+
+}
+
+/*
 //GET /journal/:id
 exports.getById = function(req, res, next) {
     return next(new Error('Oops this is an intentional error'));
@@ -40,17 +65,9 @@ exports.getById = function(req, res, next) {
     }
 }
 
+*/
 
-//GET /journal
-exports.getAll = function(req, res) {
-
-    console.log("GETTING ALL ENTRIES");
-    Journal.find(function(err, data) {
-        if(err) return console.error(err);
-
-        res.status(200).json(data);
-    });
-}
+/*
 
 //PUT /journal/:id
 exports.update = function(req, res) {
@@ -84,3 +101,4 @@ exports.delete = function(req, res) {
         res.status(204).send();
     });
 }
+*/

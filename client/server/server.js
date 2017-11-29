@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-//var methodOverride = require('method-override');
 var Journal = require('./journalEntry.js');
 function Server(port, router)
 {
@@ -17,8 +16,19 @@ function Server(port, router)
     //routers
     var router = express.Router();
 
+    router.post("/newJournal", function(req, res){
+        var entry = new Journal({
+            title: "Ayaw Gumana",
+            body: "Gumana na pls",
+            category: "life",
+            date: "11/25/2017",
+        });
+        return res.status(204).send();
+
+});
+
     //postEntry();
-    router.get('/journal', function(req, res){
+ /*   router.get('/journal', function(req, res){
 
         var entry = new Journal();
         entry.title = "Untitled";
@@ -29,11 +39,24 @@ function Server(port, router)
         return res.status(200).json(entry);
     });
 
+    router.get('/showJournal', function(req, res) {
+
+    console.log("GETTING ALL ENTRIES");*/
+   /* Journal.find(function(err, data) {
+        if(err) return console.error(err);
+
+        res.status(200).json(data);
+    });
+});*/
+
     app.use(express.static("client"));
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
     app.use('/api', router);
 
+    app.listen(port,function(){
+      console.log("Server started at " + port);
+    });
 
 
     app.listen(port,function(){
