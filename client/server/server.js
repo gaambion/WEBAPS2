@@ -1,19 +1,41 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var Journal = require('./journalEntry.js');
+var Journal = require('./client/server/model/journal.server.model.js');
 function Server(port, router)
 {
-    var mongoose = require('mongoose');
+   var mongoose = require('mongoose');
 
-    var postFunc = require('./router.js');
 
-    this.port = port;
+
+   /* this.port = port;
 
     mongoose.connect('mongodb://localhost/journal', {useMongoClient: true});
-    console.log("Done Connecting");
+    console.log("Done Connecting");*/
     var app = express();
+    port = process.env.PORT || 3000;
 
-    //routers
+    // mongoose instance connection url connection
+    mongoose.Promise = global.Promise;
+    mongoose.connect('mongodb://localhost/myJournalDB',  {useMongoClient: true});
+
+
+    app.use(express.static("client"));
+    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.json());
+    var router = require('./router.js');
+    app.use('/api', router);
+
+    app.listen(port,function(){
+      console.log("Server started at " + port);
+    });
+
+}
+module.exports = Server;
+
+
+
+
+   /* //routers
     var router = express.Router();
 
     router.post("/newJournal", function(req, res){
@@ -26,7 +48,7 @@ function Server(port, router)
         return res.status(204).send();
 
 });
-
+*/
     //postEntry();
  /*   router.get('/journal', function(req, res){
 
@@ -48,20 +70,3 @@ function Server(port, router)
         res.status(200).json(data);
     });
 });*/
-
-    app.use(express.static("client"));
-    app.use(bodyParser.urlencoded({extended: false}));
-    app.use(bodyParser.json());
-    app.use('/api', router);
-
-    app.listen(port,function(){
-      console.log("Server started at " + port);
-    });
-
-
-    app.listen(port,function(){
-      console.log("Server started at " + port);
-    });
-}
-
-module.exports = Server;

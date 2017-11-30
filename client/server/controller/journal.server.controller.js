@@ -1,9 +1,18 @@
-var Journal = require('../model/journal.server.model.js');
+//var Journal = require('../model/journal.server.model.js');
+var mongoose = require('mongoose'),
+  Journal = mongoose.model('Journal');
 //create
 
 //POST /journal
 exports.create = function(req, res){
-  /*  var journal = req.body;
+
+    var newEntry = new Journal(req.body);
+    Journal.save(function(err, task) {
+        if (err)
+          res.send(err);
+        res.json(task);
+      });
+ /*  var journal = req.body;
     var entry = new Journal({
         title: journal.title,
         body: journal.body,
@@ -17,21 +26,22 @@ exports.create = function(req, res){
 
     res.status(204).send();*/
 
-    console.log(req.body);
-    res.status(204).send();
-
-}
+/*    console.log(req.body);
+    res.status(204).send();*/
+};
 
 //GET /journal
 exports.getAll = function(req, res) {
 
-    /*console.log("GETTING ALL ENTRIES");
+/*
+    console.log("GETTING ALL ENTRIES");
     Journal.find(function(err, data) {
         if(err) return console.error(err);
 
         res.status(200).json(data);
-    });*/
-
+    });
+*/
+/*
     var entry = [{
         title: "Animo",
         body: "La Salle",
@@ -39,9 +49,15 @@ exports.getAll = function(req, res) {
         date: "Nov. 29, 2017",
     }];
 
-    res.status(200).send(entry);
+    res.status(200).send(entry);*/
 
-}
+    Journal.find({}, function(err, task) {
+    if (err)
+      res.send(err);
+    res.json(task);
+  });
+
+};
 
 /*
 //GET /journal/:id

@@ -1,12 +1,18 @@
+'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
+
+var categorySchema = new Schema({
+    category: String,
+    createdOn: { type: Date, default: Date.now}
+});
 
 var journalSchema = new Schema({
     title: String,
     body: String,
-    category: String,
-    date: String,
-    createdOn: { type: Date, default: Date.now}
+    category: categorySchema,
+    date: { type: Date, default: Date.now}
 });
 
 var Journal = mongoose.model('Journal', journalSchema);

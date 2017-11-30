@@ -1,11 +1,11 @@
 var express = require('express');
 var browserSync = require('browser-sync');
 const path = require('path');
+let bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var config = require('config');
 var Server = require('./client/server/server.js');
-var router = require('./client/server/router.js');
-//var url = "mongodb://localhost:27017/mydb";
+var router = require('./router.js');
 var app = express();
 
 app.get('/', function(req, res) {
@@ -14,11 +14,11 @@ app.get('/', function(req, res) {
 
 app.use(express.static("client"));
 
-var bs = browserSync.create();
+/*var bs = browserSync.create();
 bs.init({
-  proxy: "localhost:4000",
+  proxy: "localhost:3000",
   files: ["client/**"]
-});
+});*/
 
 //database
 var options = {
@@ -42,4 +42,4 @@ db.once('open', function() {
 
 
 //server
-var appServer = new Server(4000, router);
+var appServer = new Server(3000, router);
