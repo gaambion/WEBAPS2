@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var Journal = require('./client/server/model/journal.server.model.js');
+var Journal = require('./model/journal.server.model.js');
 function Server(port, router)
 {
    var mongoose = require('mongoose');
