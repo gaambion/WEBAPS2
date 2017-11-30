@@ -4,6 +4,11 @@ let router = require('./router.js');
 let app = express();
 const PORT = 3000;
 
+
+app.get('/', function(req, res) {
+	res.sendFile(path.join(__dirname, './client', 'journal.html'));
+});
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
