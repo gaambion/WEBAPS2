@@ -13,9 +13,9 @@
     "browser-sync": "^2.18.13",
     "config": "^1.28.1",
     "express": "^4.16.1",
+    "jsonwebtoken": "^8.1.0",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.4",
-    "express": "^4.16.1"
+    "mongoose": "^4.13.4"
   },
   "devDependencies": {
     "font-awesome": "^4.7.0"

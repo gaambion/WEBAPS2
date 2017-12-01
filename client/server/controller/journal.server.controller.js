@@ -6,12 +6,12 @@ exports.create = (req, res) =>{
 };
 
 //GET /journal
-exports.getAll = (req, res) => {
+exports.getAll = function(req, res) {
     var entry = [{
         title: "Animo",
         body: "La Salle",
         category: "school",
         date: "Nov. 29, 2017",
     }];
-    res.status(200).send(entry);
+    res.status(200).json(entry);
 };
