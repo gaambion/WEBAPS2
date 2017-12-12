@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="css/journal.css" type="text/css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
@@ -61,7 +61,7 @@
     </div>
 
     <!--Sample Cards-->
-    <div class="card w-50 mx-auto mt-4 shadowed ">
+    <!-- <div class="card w-50 mx-auto mt-4 shadowed ">
         <h3 class="card-header mt-0">
         This is Untitled.
     </h3>
@@ -96,9 +96,9 @@
         <div class="card-block m-3">
             <h5 class="card-text font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.  </h5>
         </div>
-    </div>
+    </div> -->
 
-    <div id="main">
+    <div id="journal_list">
     </div>
 
 
@@ -210,6 +210,11 @@
 
     <!--JAVASCRIPT-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel" src="js/journal_components.js"></script>
 
     <script>
         $(document).ready(function() {
