@@ -29,13 +29,20 @@ class JournalBox extends React.Component {
         </div>
 
         {/*Add Entry Modal*/}
-        <JournalAddEntryModal />
+        <JournalAddEntryModal addJournal={this._addJournal.bind(this)}/>
 
         {/*Open Entry Modal*/}
         <JournalOpenEntryModal />
 
       </div>
     );
+  }
+
+  _addJournal(journal) {
+    journal.id = this.state.journals.length + 1;
+    this.setState({
+      journals: this.state.journals.concat([journal])
+    });
   }
 
   _fetchJournals() {
@@ -151,6 +158,8 @@ class JournalAddEntryModal extends React.Component {
       entry: this._entry.value,
       category: this._category.value
     }
+
+    this.props.addJournal(journal);
 
     console.log("title: " + this._title.value);
     console.log("entry: " + this._entry.value);
