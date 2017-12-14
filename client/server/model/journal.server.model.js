@@ -10,9 +10,8 @@ var categorySchema = new Schema({
 
 var journalSchema = new Schema({
     title: String,
-    body: String,
-    category: categorySchema,
-    date: { type: Date, default: Date.now}
+    entry: String,
+    category: categorySchema
 });
 
 var Journal = mongoose.model('Journal', journalSchema);

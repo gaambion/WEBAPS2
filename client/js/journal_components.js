@@ -1,4 +1,17 @@
 class JournalBox extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      journals: []
+    }
+  }
+
+  componentWillMount() {
+    this._fetchJournals();
+  }
+
   render() {
     return(
       <div>
@@ -6,7 +19,7 @@ class JournalBox extends React.Component {
         <JournalFilterForm />
 
         {/*Journal List*/}
-        <JournalList />
+        <JournalList journals={this.state.journals}/>
 
         {/*Floating Button*/}
         <div className="btn-group">
@@ -23,6 +36,23 @@ class JournalBox extends React.Component {
 
       </div>
     );
+  }
+
+  _fetchJournals() {
+    this.state.journals = [
+      {
+        "id": "1",
+        "title": "My Journal Title 1",
+        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
+        "category": "Travel"
+      },
+      {
+        "id": "2",
+        "title": "My Journal Title 2",
+        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
+        "category": "Travel"
+      }
+    ]
   }
 }
 
@@ -69,7 +99,6 @@ class JournalAddEntryModal extends React.Component {
           <div className="modal-dialog" role="document">
               <div className="modal-content">
                   <div className="modal-header">
-                      <h5 className="modal-title">November 17, 2017</h5>
                       <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -117,7 +146,7 @@ class JournalAddEntryModal extends React.Component {
   _handleClick(e) {
     e.preventDefault();
 
-    let meeting = {
+    let journal = {
       title: this._title.value,
       entry: this._entry.value,
       category: this._category.value
@@ -158,7 +187,6 @@ class JournalOpenEntryModal extends React.Component {
                                     <option>Others</option>
                                 </select>
                             </div>
-                            <div className="col-sm-4 text-sm-right">November 17, 2017</div>
                           </div>
                         <div className="form-group">
                             <label htmlFor="editEntry">Body</label>
@@ -181,14 +209,27 @@ class JournalOpenEntryModal extends React.Component {
 
 class JournalList extends React.Component {
   render() {
+
+    let journals = this._getJournals();
+
+
     return(
       <div className="card">
         <ul className="list-group list-group-flush">
-          <Journal />
-          <Journal />
+          {journals.map((journal) =>
+            <Journal
+              key={journal.id}
+              title={journal.title}
+              category={journal.category}
+              entry={journal.entry} />
+          )}
         </ul>
       </div>
     );
+  }
+
+  _getJournals() {
+    return this.props.journals;
   }
 }
 
@@ -200,14 +241,13 @@ class Journal extends React.Component {
       <li className="list-group-item">
         <div className="card w-50 mx-auto mt-4 shadowed ">
             <h3 className="card-header mt-0">
-            Date Entry
+            {this.props.title}
             </h3>
             <div className="row ml-2 mr-2">
-                <div className="col-sm-6 mt-2 text-sm-left">Category</div>
-                <div className="col-sm-6 mt-2 text-sm-right">November 17, 2017</div>
+                <div className="col-sm-6 mt-2 text-sm-left">{this.props.category}</div>
             </div>
             <div className="card-block m-3">
-                <h5 className="card-text font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.  </h5>
+                <h5 className="card-text font-weight-normal">{this.props.entry}</h5>
             </div>
         </div>
       </li>
