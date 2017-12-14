@@ -1,27 +1,18 @@
 let express = require("express");
-let router = require("./router.js");
-let bodyParser = require("body-parser");
-let mongoose = require("mongoose");
+let auth = require("./auth.js");
+let sessionCtrl = require("./server/controllers/session.server.controller.js");
+let meetingCtrl = require("./server/controllers/meeting.server.controller.js");
+let accountCtrl = require("./server/controllers/account.server.controller.js");
 
-let app = express();
+let router = express.Router();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+/*router.post("/session", sessionCtrl.create);
+router.post("/account/register", accountCtrl.register);
 
-app.use(express.static("./public"));
-app.use("/api", router);
+router.get("/meeting", auth.check, meetingCtrl.getAll);
+router.get("/meeting/:meetingId", auth.check, meetingCtrl.getById);
+router.post("/meeting", auth.check, meetingCtrl.create);
+router.put("/meeting/:meetingId", auth.check, meetingCtrl.update);
+router.delete("/meeting/:meetingId", auth.check, meetingCtrl.delete);*/
 
-app.use("*", function(req, res) {
-    res.send("Resource not found (404).");
-});
-
-//db init
-mongoose.connect("mongodb://localhost/scrumie", {
-    useMongoClient: true
-});
-
-mongoose.promise = Promise;
-
-app.listen(3000, function() {
-    console.log("Server started at PORT 3000");
-});
+module.exports = router;
