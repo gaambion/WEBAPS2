@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var bodyParser = require('body-parser');
 var Journal = require('./model/journal.server.model.js');
 function Server(port, router)
@@ -11,12 +11,12 @@ function Server(port, router)
 
     mongoose.connect('mongodb://localhost/journal', {useMongoClient: true});
     console.log("Done Connecting");*/
-    var app = express();
+  /*  var app = express();
     port = process.env.PORT || 3000;
 
     // mongoose instance connection url connection
     mongoose.Promise = global.Promise;
-    mongoose.connect('mongodb://localhost/myJournalDB',  {useMongoClient: true});
+    // mongoose.connect('mongodb://localhost/myJournalDB',  {useMongoClient: true});
 
 
     app.use(express.static("client"));
