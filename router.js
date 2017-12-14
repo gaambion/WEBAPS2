@@ -50,6 +50,7 @@ router.use(function(req, res, next) {
 
 router.get("/journal", Journalctrl.getAll);
 router.post("/session", Sessionctrl.create);
+router.post("/login", Sessionctrl.login);
 
 
 

@@ -20,3 +20,13 @@ exports.create = function(req, res) {
         res.status(401).send();
     }
 }
+
+
+exports.login = function(req, res){
+    const user = { id:3 };
+    const token = jwt.sign({user}, 'secretKey');
+    res.json({
+        token:token
+    });
+
+}
