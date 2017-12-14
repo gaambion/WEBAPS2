@@ -1,72 +1,27 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var Journal = require('./model/journal.server.model.js');
-function Server(port, router)
-{
-   var mongoose = require('mongoose');
+let express = require("express");
+let router = require("./router.js");
+let bodyParser = require("body-parser");
+let mongoose = require("mongoose");
 
+let app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-   /* this.port = port;
+app.use(express.static("./public"));
+app.use("/api", router);
 
-    mongoose.connect('mongodb://localhost/journal', {useMongoClient: true});
-    console.log("Done Connecting");*/
-    var app = express();
-    port = process.env.PORT || 3000;
-
-    // mongoose instance connection url connection
-    mongoose.Promise = global.Promise;
-    mongoose.connect('mongodb://localhost/myJournalDB',  {useMongoClient: true});
-
-
-    app.use(express.static("client"));
-    app.use(bodyParser.urlencoded({extended: false}));
-    app.use(bodyParser.json());
-    var router = require('./router.js');
-    app.use('/api', router);
-
-    app.listen(port,function(){
-      console.log("Server started at " + port);
-    });
-
-}
-module.exports = Server;
-
-
-
-
-   /* //routers
-    var router = express.Router();
-
-    router.post("/newJournal", function(req, res){
-        var entry = new Journal({
-            title: "Ayaw Gumana",
-            body: "Gumana na pls",
-            category: "life",
-            date: "11/25/2017",
-        });
-        return res.status(204).send();
-
+app.use("*", function(req, res) {
+    res.send("Resource not found (404).");
 });
-*/
-    //postEntry();
- /*   router.get('/journal', function(req, res){
 
-        var entry = new Journal();
-        entry.title = "Untitled";
-        entry.body = "hello world";
-        entry.category = "Life";
-        entry.date = "11/24/2017"
-        console.log("[SERVER] New Journal Entry");
-        return res.status(200).json(entry);
-    });
+//db init
+mongoose.connect("mongodb://localhost/scrumie", {
+    useMongoClient: true
+});
 
-    router.get('/showJournal', function(req, res) {
+mongoose.promise = Promise;
 
-    console.log("GETTING ALL ENTRIES");*/
-   /* Journal.find(function(err, data) {
-        if(err) return console.error(err);
-
-        res.status(200).json(data);
-    });
-});*/
+app.listen(3000, function() {
+    console.log("Server started at PORT 3000");
+});
