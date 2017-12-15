@@ -54,7 +54,9 @@ exports.update = function(req, res) {
         }
 
         note.title = req.body.title;
-        note.content = req.body.content;
+        note.body = req.body.body;
+        note.category = req.body.category;
+        note.date = req.body.date;
 
         note.save(function(err, data){
             if(err) {
