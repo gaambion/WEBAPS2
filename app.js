@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
@@ -6,6 +7,9 @@ let mongoose = require('mongoose');
 let app = express();
 const PORT = 3000;
 
+var browserSync = require('browser-sync');/*
+var Server = require('./client/server/server.js');
+var router = require('./client/server/router.js');*/
 
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, './client', 'journal.html'));
