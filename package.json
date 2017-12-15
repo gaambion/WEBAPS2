@@ -10,12 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "browser-sync": "^2.18.13",
     "config": "^1.28.1",
     "express": "^4.16.1",
     "jsonwebtoken": "^8.1.0",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.4"
+    "mongoose": "^4.13.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "font-awesome": "^4.7.0"
