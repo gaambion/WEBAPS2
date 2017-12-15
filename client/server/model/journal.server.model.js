@@ -5,8 +5,7 @@ var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 let categorySchema = new Schema({
-    category: String,
-    createdOn: { type: Date, default: Date.now}
+    category: String
 });
 
 let journalSchema = new Schema({
@@ -31,5 +30,7 @@ journalSchema.statistics = {
 }
 
 var Journal = mongoose.model('Journal', journalSchema);
+var Category = mongoose.model('Category', categorySchema);
 
 module.exports = Journal;
+module.exports = Category;

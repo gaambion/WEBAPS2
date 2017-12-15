@@ -5,7 +5,7 @@ let Sessionctrl = require("./client/server/controller/session.server.controller.
 
 let router = express.Router();
 
-//authentication middleware
+/*//authentication middleware
 router.use(function(req, res, next) {
     var token = req.headers.authorization;
 
@@ -28,6 +28,7 @@ router.use(function(req, res, next) {
     }
 });
 
+
 //authorization middleware
 router.use(function(req, res, next) {
     if(!req.url.startsWith("/session")) {
@@ -44,11 +45,11 @@ router.use(function(req, res, next) {
     } else {
         next();
     }
-});
+});*/
 
 
-
-router.get("/journal", Journalctrl.getAll);
+router.get("/getJournal", Journalctrl.findAll);
+router.post("/newJournal", Journalctrl.create);
 router.post("/session", Sessionctrl.create);
 
 

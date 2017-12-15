@@ -26,14 +26,12 @@ mongoose.connect("mongodb://localhost/journals", {
 });
 
 mongoose.promise = Promise;
-/*
 var db = mongoose.connection;
 
 db.on('error',console.error.bind(console, 'MondoDB Connection Error'));
 db.on('open', function(ref){
 	console.log('Connected to Mongodb Server');
 })
-*/
 
 app.listen(PORT, () => {
     console.log(`[${PORT}] server started.`);
