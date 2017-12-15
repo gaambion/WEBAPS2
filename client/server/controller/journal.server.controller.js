@@ -1,37 +1,81 @@
+<<<<<<< HEAD
 let Journal = require("../model/journal.server.model.js");
 let Category = require("../model/journal.server.model.js");
 //POST /journal
-exports.create = (req, res) =>{
-    console.log(req);
-    if(!req.body.entry) {
-        res.status(400).send({message: "Journal can not be empty"});
+exports.create = function(req, res) {
+    // Create and Save a new Journal
+    if(!req.body.body) {
+      res.status(400).send({message: "Journal can not be empty"});
     }
-    var journal = new Journal({title: req.body.title || "Untitled Note",
-                            entry: req.body.entry || "Empty Body"
-                           });
+    var note = new Journal({
+      title: req.body.title || "Untitled Journal",
+      body: req.body.body,
+      category: req.body.category
+    });
+    note.save(function(err, data) {
+      console.log(data);
+      if(err) {
+        console.log(err);
+        res.status(500).send({message: "Some error occurred while creating the Journal."});
+      }else{
+          console.log("Creating Succeeded");
+        res.send(data);
+      }
+    });
+};
 
-    journal.save(function(err, data) {
-        console.log(data);
+exports.findAll = function(req, res) {
+    // Retrieve and return all notes from the database.
+    Journal.find(function(err, notes){
         if(err) {
-            console.log(err);
-            res.status(500).send({message: "Some error occurred while creating the Note."});
+            res.status(500).send({message: "Some error occurred while retrieving notes."});
         } else {
-            console.log("Creating Succeeded");
+            res.send(notes);
+        }
+    });
+};
+
+exports.findOne = function(req, res) {
+    // Find a single note with a noteId
+    Journal.findById(req.params.noteId, function(err, data) {
+        if(err) {
+            res.status(500).send({message: "Could not retrieve note with id " + req.params.noteId});
+        } else {
             res.send(data);
         }
     });
 };
 
-
-//GET /journal
-exports.findAll = function(req, res) {
-    Journal.find(function(err, journal){
-        console.log(journal);
+exports.update = function(req, res) {
+    // Update a note identified by the noteId in the request
+    Journal.findById(req.params.noteId, function(err, note) {
         if(err) {
-            res.status(500).send({message: "Some error occurred while retrieving journal."});
+            res.status(500).send({message: "Could not find a note with id " + req.params.noteId});
+        }
+
+        note.title = req.body.title;
+        note.body = req.body.body;
+        note.category = req.body.category;
+        note.date = req.body.date;
+
+        note.save(function(err, data){
+            if(err) {
+                res.status(500).send({message: "Could not update note with id " + req.params.noteId});
+            } else {
+                res.send(data);
+            }
+        });
+    });
+};
+
+exports.delete = function(req, res) {
+    // Delete a note with the specified noteId in the request
+    Journal.remove({_id: req.params.noteId}, function(err, data) {
+        if(err) {
+            res.status(500).send({message: "Could not delete note with id " + req.params.id});
         } else {
-            console.log("Retreiving Succeeded");
-            res.send(journal);
+            res.send({message: "Journal deleted successfully!"})
+>>>>>>> origin/mongoose_branch
         }
     });
 };
