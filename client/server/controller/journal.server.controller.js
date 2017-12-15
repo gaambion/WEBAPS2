@@ -1,86 +1,78 @@
 var Journal = require('../model/journal.server.model.js');
 //create
 
-//POST /journal
-exports.create = function(req, res){
-    var journal = req.body;
-    var entry = new Journal({
-        title: journal.title,
-        body: journal.body,
-        category: journal.category,
-        date: journal.date,
+
+exports.create = function(req, res) {
+    // Create and Save a new Journal
+    if(!req.body.body) {
+      res.status(400).send({message: "Journal can not be empty"});
+    }
+    var note = new Journal({
+      title: req.body.title || "Untitled Journal",
+      body: req.body.body,
+      category: req.body.category,
+      date: req.body.date
     });
-
-    entry.save(function(err, data) {
-        if(err) return console.error(err);
+    note.save(function(err, data) {
+      console.log(data);
+      if(err) {
+        console.log(err);
+        res.status(500).send({message: "Some error occurred while creating the Journal."});
+      }else{
+        res.send(data);
+      }
     });
+};
 
-    res.status(204).send();
+exports.findAll = function(req, res) {
+    // Retrieve and return all notes from the database.
+    Journal.find(function(err, notes){
+        if(err) {
+            res.status(500).send({message: "Some error occurred while retrieving notes."});
+        } else {
+            res.send(notes);
+        }
+    });
+};
 
-}
+exports.findOne = function(req, res) {
+    // Find a single note with a noteId
+    Journal.findById(req.params.noteId, function(err, data) {
+        if(err) {
+            res.status(500).send({message: "Could not retrieve note with id " + req.params.noteId});
+        } else {
+            res.send(data);
+        }
+    });
+};
 
-//GET /journal/:id
-exports.getById = function(req, res, next) {
-    return next(new Error('Oops this is an intentional error'));
+exports.update = function(req, res) {
+    // Update a note identified by the noteId in the request
+    Journal.findById(req.params.noteId, function(err, note) {
+        if(err) {
+            res.status(500).send({message: "Could not find a note with id " + req.params.noteId});
+        }
 
-    var id = req.params.id;
+        note.title = req.body.title;
+        note.content = req.body.content;
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send();
-    } else {
-        Journal.findById(id, function(err, data) {
-            if(err) return next(err);
-
-            if(data) {
-                res.status(200).json(data);
+        note.save(function(err, data){
+            if(err) {
+                res.status(500).send({message: "Could not update note with id " + req.params.noteId});
             } else {
-                res.status(404).send();
+                res.send(data);
             }
         });
-    }
-}
-
-
-//GET /journal
-exports.getAll = function(req, res) {
-
-    console.log("GETTING ALL ENTRIES");
-    Journal.find(function(err, data) {
-        if(err) return console.error(err);
-
-        res.status(200).json(data);
     });
-}
+};
 
-//PUT /journal/:id
-exports.update = function(req, res) {
-
-    var id = req.params.id;
-    var journal = req.body;
-
-    Journal.findById(id, function(err, entry) {
-        if(err) return console.error(err);
-
-        entry.title = journal.title;
-        entry.body = journal.body;
-        entry.category = journal.category;
-        entry.date = journal.date;
-
-        entry.save(function(err, data) {
-            if(err) return console.error(err);
-
-            res.status(204).send();
-        });
-    });
-
-}
-
-//DELETE /journal/:id
 exports.delete = function(req, res) {
-    var id = req.params.id;
-    Journal.findByIdAndRemove(id, function(err, data) {
-        if(err) return console.error(err);
-
-        res.status(204).send();
+    // Delete a note with the specified noteId in the request
+    Journal.remove({_id: req.params.noteId}, function(err, data) {
+        if(err) {
+            res.status(500).send({message: "Could not delete note with id " + req.params.id});
+        } else {
+            res.send({message: "Journal deleted successfully!"})
+        }
     });
-}
+};
