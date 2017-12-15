@@ -19,41 +19,14 @@
 </head>
 <body>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="blank col-12 hidden-sm-down"></div>
-    </div>
-    <div class="row">
-      <div class="content logo col-md-6 col-sm-6 col-xs-2" >
-        Quill
-      </div> <!-- content logo -->
-      <div class="content form col-md-6 col-sm-6 col-xs-10">
-        <form class="form-signin">
-          <h2 class="form-signin-heading">Create an Account</h2>
+  <div id="root"/>
 
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-          <label for="inputDisplayName" class="sr-only">Display Name</label>
-          <input type="text" id="inputDisplayName" class="form-control" placeholder="Display Name" required>
-
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-
-          <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-          <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
-
-          <div class="formLink">
-            <label>
-              Already have an account? Login
-              <a href="./index.html"> here</a>!
-            </label>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-        </form>
-      </div> <!-- content form -->
-    </div>
-  </div>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel" src="js/register_components.js"></script>
 
 </body>
 </html>
