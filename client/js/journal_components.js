@@ -10,7 +10,34 @@ class JournalBox extends React.Component {
   }
 
   componentWillMount() {
-    this._fetchJournals();
+      console.log("Fetching Journals");
+      let results;
+      fetch("http://localhost:3000/api/getJournal")
+      .then(res => res.json())
+      .then(
+        (result) => {
+            console.log("result");
+            console.log(result);
+            results = result;
+            console.log(JSON.stringify(result));
+            this.setState({result});
+            console.log(this.state.journals);
+         // this.state.journals = result;
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+      console.log(this.state.journals);
+      console.log("Done");
+
+    //this._fetchJournals();
   }
 
   render() {
@@ -47,24 +74,6 @@ class JournalBox extends React.Component {
   }
 
   _fetchJournals() {
-        console.log("Fetching Journals");
-
-     $.ajax({
-            type: "GET",
-            url: "/api/getJournal"
-        }).done((meetings, status, xhr) => {
-            //this.setState({ meetings });
-            console.log(meetings);
-        }).fail((xhr) => {
-            console.log(xhr.status);
-
-            if(xhr.status == 401) {
-                this.setState({
-                    auth: false
-                });
-            }
-        });
-
 
     this.state.journals = [
       {
@@ -285,3 +294,4 @@ class Journal extends React.Component {
 }
 
 ReactDOM.render( <JournalBox />, document.getElementById("journal_box"));
+
