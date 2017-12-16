@@ -45,35 +45,39 @@ exports.findOne = function(req, res) {
     });
 };
 
+//Updating a Note using PUT /notes/:noteId
 exports.update = function(req, res) {
     // Update a note identified by the noteId in the request
+    console.log(req.params.noteId);
     Journal.findById(req.params.noteId, function(err, note) {
         if(err) {
             res.status(500).send({message: "Could not find a note with id " + req.params.noteId});
         }
 
         note.title = req.body.title;
-        note.body = req.body.body;
+        note.entry = req.body.entry;
         note.category = req.body.category;
-        note.date = req.body.date;
 
         note.save(function(err, data){
             if(err) {
                 res.status(500).send({message: "Could not update note with id " + req.params.noteId});
             } else {
+                console.log("Updating Succeeded");
                 res.send(data);
             }
         });
     });
 };
 
+//Deleting a Note using DELETE /notes/:noteId
 exports.delete = function(req, res) {
     // Delete a note with the specified noteId in the request
     Journal.remove({_id: req.params.noteId}, function(err, data) {
         if(err) {
             res.status(500).send({message: "Could not delete note with id " + req.params.id});
         } else {
-            res.send({message: "Journal deleted successfully!"})
+            console.log("Deleting Succeeded");
+            res.send({message: "Journal deleted successfully!"});
         }
     });
 };

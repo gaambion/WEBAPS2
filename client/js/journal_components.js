@@ -59,7 +59,7 @@ class JournalBox extends React.Component {
         <JournalAddEntryModal addJournal={this._addJournal.bind(this)}/>
 
         {/*Open Entry Modal*/}
-        <JournalOpenEntryModal />
+        <JournalOpenEntryModal/>
 
       </div>
     );
@@ -72,23 +72,8 @@ class JournalBox extends React.Component {
     });
   }
 
-  _fetchJournals() {
 
-    this.state.journals = [
-      {
-        "id": "1",
-        "title": "My Journal Title 1",
-        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
-        "category": "Travel"
-      },
-      {
-        "id": "2",
-        "title": "My Journal Title 2",
-        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
-        "category": "Travel"
-      }
-    ]
-  }
+
 }
 
 class JournalFilterForm extends React.Component {
@@ -253,6 +238,18 @@ class JournalOpenEntryModal extends React.Component {
       </div>
     );
   }
+
+    _handleUpdate(meetingId) {
+            fetch('http://localhost:3000/api/updateJournal/' + meetingId, {
+                method: 'PUT',
+                 headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(journal)
+            })
+        }
+
 }
 
 class JournalList extends React.Component {

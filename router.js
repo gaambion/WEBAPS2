@@ -50,8 +50,8 @@ router.use(function(req, res, next) {
 
 router.get("/getJournal", Journalctrl.findAll);
 router.post("/newJournal", Journalctrl.create);
-router.post("/updateJournal", Journalctrl.update);
-router.post("/deleteJournal", Journalctrl.delete);
+router.put("/updateJournal/:noteId", Journalctrl.update);
+router.delete("/deleteJournal/:noteId", Journalctrl.delete);
 router.post("/session", Sessionctrl.create);
 
 
