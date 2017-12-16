@@ -19,13 +19,23 @@
 <body>
     <div id="overlay" > </div>
     <header>
-        <h1>Quill</h1>
-        <nav>
-            <ul>
-                <li><a href="journal.html">Journal</a></li>
-                <li><a href="#">Gaius Ambion</a></li>
-            </ul>
-        </nav>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Quill</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Journal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Gaius Ambion</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
 
 
@@ -53,7 +63,6 @@
                 </select>
             </div>
         </form>
-
     </div>
 
     <!--Sample Cards-->
