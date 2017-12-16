@@ -1,5 +1,11 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body{
   background-color: #F9EAE1;
+  margin-bottom: 60px;
 }
 header{
   background-color: #6C0E23;
@@ -50,14 +56,24 @@ header nav ul li:hover {
   text-decoration: none;
 }
 
-footer{
-  background-color: #44403e;
-  float: left;
+.footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  padding: 0.5em;
+  background-color: #44403e;
   text-align: center;
-  color: white;
-  margin-top: 13px;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 li{
