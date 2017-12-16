@@ -20,9 +20,8 @@ class JournalBox extends React.Component {
             console.log(result);
             results = result;
             console.log(JSON.stringify(result));
-            this.setState({result});
+            this.setState({journals: result});
             console.log(this.state.journals);
-         // this.state.journals = result;
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
