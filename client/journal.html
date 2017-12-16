@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div id="overlay" > </div>
+
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top">
@@ -68,8 +68,8 @@
     <!--LIST OF CARDS TO AH -->
     <div class="container">
       <!--Sample Cards-->
-      <div class="card shadowed w-60">
-          <h3 class="card-header"> This is Untitled. </h3>
+      <div class="card shadowed w-60" data-toggle="modal" data-target="#viewEntry">
+          <h3 class="card-header" id="journalTitle"> This is Untitled. </h3>
           <div class="row ml-4 mr-4">
               <div class="col-sm-6 mt-4 text-sm-left">Category</div>
               <div class="col-sm-6 mt-4 text-sm-right">November 17, 2017</div>
@@ -131,7 +131,7 @@
 
     <!--Open Entry Modal-->
 
-    <div class="modal modal-ku" id="viewEntry" tabindex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
+    <div class="modal modal-ku fade" id="viewEntry" tabindex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
@@ -190,25 +190,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $("#overlay").hide();
 
             $(".closeModal").click(function() {
                 $("#addEntryModal").modal('hide');
-                $("#viewEntry").hide();
-                $("#overlay").hide();
+                $("#viewEntry").modal('hide');
                 console.log("Modal Close");
             });
 
             $(".close").click(function() {
                 $("#addEntryModal").hide();
-                $("#overlay").hide();
-                $("#viewEntry").hide();
+                $("#viewEntry").modal('hide');
                 console.log("Modal Close");
             });
 
             $(".shadowed").click(function() {
-                $("#overlay").show();
-                $("#viewEntry").show();
                 console.log("Card Clicked");
             });
         });
