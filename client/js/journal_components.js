@@ -194,7 +194,16 @@ class JournalAddEntryModal extends React.Component {
     console.log("title: " + this._title.value);
     console.log("entry: " + this._entry.value);
     console.log("category: " + this._category.value);
-  }
+
+    fetch('http://localhost:3000/api/newJournal', {
+        method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(journal)
+        })
+    }
 }
 
 class JournalOpenEntryModal extends React.Component {
