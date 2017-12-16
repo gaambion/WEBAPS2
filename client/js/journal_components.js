@@ -50,7 +50,7 @@ class JournalBox extends React.Component {
 
         {/*Floating Button*/}
         <div className="btn-group">
-            <button type="button" id="addEntry" className="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised " data-toggle="modal" data-target="#myModal">
+            <button type="button" id="addEntry" className="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised " data-toggle="modal" data-target="#addEntryModal">
               <i className="fa fa-plus" aria-hidden="true"></i>
             </button>
         </div>
@@ -81,7 +81,7 @@ class JournalFilterForm extends React.Component {
     return(
       <div className="container w-75 mx-auto">
         <form>
-            <div className="form-row">
+            <div className="form-row mt-5">
                 <label className="col-md-2 col-sm-2" htmlFor="select_month">Filter By:</label>
                 <select className="form-control col-md-2 col-sm-2" id="select_month">
                     <option>January</option>
@@ -117,7 +117,7 @@ class JournalAddEntryModal extends React.Component {
   render() {
       console.log("RENDER JOURNAL ENTRY MODAL");
     return(
-      <div className="modal " id="addEntryModal">
+      <div class="modal fade" id="addEntryModal" tabindex="-1" role="dialog" aria-labelledby="AddEntryModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content">
                   <div className="modal-header">
@@ -194,7 +194,7 @@ class JournalAddEntryModal extends React.Component {
 class JournalOpenEntryModal extends React.Component {
   render() {
     return(
-      <div className="modal modal-ku" id="viewEntry">
+      <div class="modal modal-ku fade" id="viewEntry" tabindex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content ">
                   <div className="modal-header">
@@ -284,7 +284,7 @@ class Journal extends React.Component {
   render() {
     return(
       <li className="list-group-item">
-        <div className="card w-50 mx-auto mt-4 shadowed ">
+        <div class="card shadowed w-60" data-toggle="modal" data-target="#viewEntry">
             <h3 className="card-header mt-0">
             {this.props.title}
             </h3>
@@ -301,4 +301,3 @@ class Journal extends React.Component {
 }
 
 ReactDOM.render( <JournalBox />, document.getElementById("journal_box"));
-
