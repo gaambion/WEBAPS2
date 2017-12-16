@@ -11,7 +11,7 @@ let categorySchema = new Schema({
 let journalSchema = new Schema({
     title: String,
     entry: String,
-    category: categorySchema
+    category: String
 });
 
 journalSchema.statistics = {
@@ -29,8 +29,9 @@ journalSchema.statistics = {
   }
 }
 
-var Journal = mongoose.model('Journal', journalSchema);
-var Category = mongoose.model('Category', categorySchema);
 
-module.exports = Journal;
+var Category = mongoose.model('Category', categorySchema);
+var Journal = mongoose.model('Journal', journalSchema);
+
 module.exports = Category;
+module.exports = Journal;

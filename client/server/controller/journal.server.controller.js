@@ -1,6 +1,5 @@
 
 let Journal = require("../model/journal.server.model.js");
-let Category = require("../model/journal.server.model.js");
 //POST /journal
 exports.create = function(req, res) {
     // Create and Save a new Journal
@@ -9,8 +8,8 @@ exports.create = function(req, res) {
     }
     var note = new Journal({
       title: req.body.title || "Untitled Journal",
-      body: req.body.body,
-      category: req.body.category
+      entry: req.body.entry,
+      category:  req.body.category || "Thoughts"
     });
     note.save(function(err, data) {
       console.log(data);

@@ -2,7 +2,7 @@ let express = require("express");
 var jwt = require("jsonwebtoken");
 let Journalctrl = require("./client/server/controller/journal.server.controller.js");
 let Sessionctrl = require("./client/server/controller/session.server.controller.js");
-
+let Userctrl = require('./client/server/controller/user.server.controller.js');
 let router = express.Router();
 
 /*//authentication middleware
@@ -50,6 +50,8 @@ router.use(function(req, res, next) {
 
 router.get("/getJournal", Journalctrl.findAll);
 router.post("/newJournal", Journalctrl.create);
+router.post("/updateJournal", Journalctrl.update);
+router.post("/deleteJournal", Journalctrl.delete);
 router.post("/session", Sessionctrl.create);
 
 

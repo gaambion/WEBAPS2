@@ -1,3 +1,4 @@
+
 class JournalBox extends React.Component {
 
   constructor() {
@@ -46,6 +47,25 @@ class JournalBox extends React.Component {
   }
 
   _fetchJournals() {
+        console.log("Fetching Journals");
+
+     $.ajax({
+            type: "GET",
+            url: "/api/getJournal"
+        }).done((meetings, status, xhr) => {
+            //this.setState({ meetings });
+            console.log(meetings);
+        }).fail((xhr) => {
+            console.log(xhr.status);
+
+            if(xhr.status == 401) {
+                this.setState({
+                    auth: false
+                });
+            }
+        });
+
+
     this.state.journals = [
       {
         "id": "1",

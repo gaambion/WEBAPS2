@@ -18,7 +18,8 @@
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.4",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-http-request": "^1.0.3"
   },
   "devDependencies": {
     "font-awesome": "^4.7.0"
