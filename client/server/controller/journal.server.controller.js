@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+
 let Journal = require("../model/journal.server.model.js");
 let Category = require("../model/journal.server.model.js");
 //POST /journal
 exports.create = function(req, res) {
     // Create and Save a new Journal
-    if(!req.body.body) {
+    if(!req.body) {
       res.status(400).send({message: "Journal can not be empty"});
     }
     var note = new Journal({
@@ -75,7 +75,6 @@ exports.delete = function(req, res) {
             res.status(500).send({message: "Could not delete note with id " + req.params.id});
         } else {
             res.send({message: "Journal deleted successfully!"})
->>>>>>> origin/mongoose_branch
         }
     });
 };
