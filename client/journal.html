@@ -38,7 +38,6 @@
       </nav>
     </header>
 
-
     <!--Filter Bar-->
     <div class="container w-75 mx-auto">
         <form>
@@ -65,67 +64,66 @@
         </form>
     </div>
 
-    <!--Sample Cards-->
-    <div class="card w-50 mx-auto mt-4 shadowed ">
-        <h3 class="card-header mt-0">
-        This is Untitled.
-    </h3>
-        <div class="row ml-2 mr-2">
-            <div class="col-sm-6 mt-2 text-sm-left">Category</div>
-            <div class="col-sm-6 mt-2 text-sm-right">November 17, 2017</div>
-        </div>
-        <div class="card-block m-3">
-            <h5 class="card-text font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.  </h5>
-        </div>
+
+    <!--LIST OF CARDS TO AH -->
+    <div class="container">
+      <!--Sample Cards-->
+      <div class="card shadowed w-60">
+          <h3 class="card-header"> This is Untitled. </h3>
+          <div class="row ml-4 mr-4">
+              <div class="col-sm-6 mt-4 text-sm-left">Category</div>
+              <div class="col-sm-6 mt-4 text-sm-right">November 17, 2017</div>
+          </div>
+          <div class="card-body mb-3 mr-3 ml-3">
+              <h5 class="card-text font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.  </h5>
+          </div>
+      </div>
     </div>
 
     <!--Floating Button-->
     <div class="btn-group">
-        <button type="button" id="addEntry" class="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised " data-toggle="modal" data-target="#myModal">
+        <button type="button" id="addEntry" class="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised" data-toggle="modal" data-target="#addEntryModal">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     </div>
 
     <!--Add Entry Modal-->
-
-    <div class="modal " id="addEntryModal">
+    <div class="modal fade" id="addEntryModal" tabindex="-1" role="dialog" aria-labelledby="AddEntryModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">November 17, 2017</h5>
+                    <h5 class="modal-title" id="dataToday">November 17, 2017</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
+                        <div class="form-group col-8">
                             <label for="entryTitle">Title</label>
                             <input type="text" class="form-control" id="entryTitle" placeholder="My Entry">
                           </div>
-
-                        <div class="form-group">
-                            <label for="newEntry">Body</label>
-                            <textarea class="form-control" rows="5" id="newEntry"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="select_category">Category</label>
-                            <select class="form-control " id="select_category">
-                                <option>Thoughts</option>
-                                <option>Travel</option>
-                                <option>School</option>
-                                <option>Love</option>
-                                <option>Friends</option>
-                                <option>Notes</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
+                          <div class="form-group col-8">
+                              <label for="select_category">Category</label>
+                              <select class="form-control" id="select_category">
+                                  <option>Thoughts</option>
+                                  <option>Travel</option>
+                                  <option>School</option>
+                                  <option>Love</option>
+                                  <option>Friends</option>
+                                  <option>Notes</option>
+                                  <option>Others</option>
+                              </select>
+                          </div>
+                          <div class="form-group col-12">
+                              <label for="newEntry">Body</label>
+                              <textarea class="form-control"  id="newEntry"></textarea>
+                          </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary closeModal">Save</button>
-                    <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -133,7 +131,7 @@
 
     <!--Open Entry Modal-->
 
-    <div class="modal modal-ku" id="viewEntry">
+    <div class="modal modal-ku" id="viewEntry" tabindex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
@@ -192,26 +190,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-
             $("#overlay").hide();
 
-            $("#addEntry").click(function() {
-                $("#overlay").show();
-                $("#addEntryModal").show();
-                console.log("Modal Launch");
+            $(".closeModal").click(function() {
+                $("#addEntryModal").modal('hide');
+                $("#viewEntry").hide();
+                $("#overlay").hide();
+                console.log("Modal Close");
             });
 
             $(".close").click(function() {
                 $("#addEntryModal").hide();
                 $("#overlay").hide();
                 $("#viewEntry").hide();
-                console.log("Modal Close");
-            });
-
-            $(".closeModal").click(function() {
-                $("#addEntryModal").hide();
-                $("#viewEntry").hide();
-                $("#overlay").hide();
                 console.log("Modal Close");
             });
 
