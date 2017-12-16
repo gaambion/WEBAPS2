@@ -125,10 +125,12 @@ class JournalFilterForm extends React.Component {
 class JournalAddEntryModal extends React.Component {
 
   constructor() {
+      console.log("NEW JOURNAL ENTRY MODAL");
     super();
   }
 
   render() {
+      console.log("RENDER JOURNAL ENTRY MODAL");
     return(
       <div className="modal " id="addEntryModal">
           <div className="modal-dialog" role="document">
