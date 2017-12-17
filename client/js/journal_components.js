@@ -5,7 +5,8 @@ class JournalBox extends React.Component {
     super();
 
     this.state = {
-      journals: []
+      journals: [],
+      currJournalId: ""
     }
   }
 
@@ -19,9 +20,9 @@ class JournalBox extends React.Component {
             console.log("result");
             console.log(result);
             results = result;
-            console.log(JSON.stringify(result));
+            // console.log(JSON.stringify(result));
             this.setState({journals: result});
-            console.log(this.state.journals);
+            // console.log(this.state.journals);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -33,7 +34,7 @@ class JournalBox extends React.Component {
           });
         }
       )
-      console.log(this.state.journals);
+      // console.log(this.state.journals);
       console.log("Done");
 
     //this._fetchJournals();
@@ -46,11 +47,12 @@ class JournalBox extends React.Component {
         <JournalFilterForm />
 
         {/*Journal List*/}
-        <JournalList journals={this.state.journals}/>
+        <JournalList journals={this.state.journals} openJournal={this._openJournal.bind(this)}/>
 
         {/*Floating Button*/}
         <div className="btn-group">
-            <button type="button" id="addEntry" className="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised " data-toggle="modal" data-target="#addEntryModal">
+            <button type="button" id="addEntry" className="btn btn-warning btn-fab pmd-btn-fab pmd-btn-raised "
+              data-toggle="modal" data-target="#addEntryModal">
               <i className="fa fa-plus" aria-hidden="true"></i>
             </button>
         </div>
@@ -59,7 +61,7 @@ class JournalBox extends React.Component {
         <JournalAddEntryModal addJournal={this._addJournal.bind(this)}/>
 
         {/*Open Entry Modal*/}
-        <JournalOpenEntryModal />
+        <JournalOpenEntryModal currJournalId={this.state.currJournalId}/>
 
       </div>
     );
@@ -72,22 +74,8 @@ class JournalBox extends React.Component {
     });
   }
 
-  _fetchJournals() {
-
-    this.state.journals = [
-      {
-        "id": "1",
-        "title": "My Journal Title 1",
-        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
-        "category": "Travel"
-      },
-      {
-        "id": "2",
-        "title": "My Journal Title 2",
-        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
-        "category": "Travel"
-      }
-    ]
+  _openJournal(journalId) {
+    this.state.currJournalId = journalId;
   }
 }
 
@@ -125,14 +113,13 @@ class JournalFilterForm extends React.Component {
 class JournalAddEntryModal extends React.Component {
 
   constructor() {
-      console.log("NEW JOURNAL ENTRY MODAL");
     super();
   }
 
   render() {
-      console.log("RENDER JOURNAL ENTRY MODAL");
     return(
-      <div className="modal fade" id="addEntryModal" tabIndex="-1" role="dialog" aria-labelledby="AddEntryModalLabel" aria-hidden="true">
+      <div className="modal fade" id="addEntryModal" tabIndex="-1" role="dialog" aria-labelledby="AddEntryModalLabel"
+        aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content">
                   <div className="modal-header">
@@ -207,9 +194,18 @@ class JournalAddEntryModal extends React.Component {
 }
 
 class JournalOpenEntryModal extends React.Component {
+
+  constructor() {
+    super();
+  }
+
   render() {
+
+    console.log(this.props.currJournalId);
+
     return(
-      <div className="modal modal-ku fade" id="viewEntry" tabIndex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
+      <div className="modal modal-ku fade" id="viewEntry" tabIndex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel"
+        aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content ">
                   <div className="modal-header">
@@ -260,16 +256,17 @@ class JournalList extends React.Component {
 
     let journals = this._getJournals();
 
-
     return(
       <div className="card">
         <ul className="list-group list-group-flush">
           {journals.map((journal) =>
             <Journal
-              key={journal.id}
+              key={journal._id}
+              journalId={journal._id}
               title={journal.title}
               category={journal.category}
-              entry={journal.entry} />
+              entry={journal.entry}
+              openJournal={this._openJournal.bind(this)}/>
           )}
         </ul>
       </div>
@@ -279,15 +276,25 @@ class JournalList extends React.Component {
   _getJournals() {
     return this.props.journals;
   }
+
+  _openJournal(journalId) {
+    this.props.openJournal(journalId);
+  }
 }
 
 
 
 class Journal extends React.Component {
+
+  constructor() {
+    super();
+  }
+
   render() {
     return(
       <li className="list-group-item">
-        <div className="card shadowed w-60" data-toggle="modal" data-target="#viewEntry">
+        <div className="card shadowed w-60" data-toggle="modal" data-target="#viewEntry"
+          onClick={this._handleClickJournal.bind(this)}>
             <h3 className="card-header mt-0">
             {this.props.title}
             </h3>
@@ -300,6 +307,10 @@ class Journal extends React.Component {
         </div>
       </li>
     );
+  }
+
+  _handleClickJournal(e) {
+    this.props.openJournal(this.props.journalId);
   }
 }
 
