@@ -33,10 +33,7 @@ class JournalBox extends React.Component {
           });
         }
       )
-      console.log(this.state.journals);
       console.log("Done");
-
-    //this._fetchJournals();
   }
 
   render() {
@@ -70,24 +67,6 @@ class JournalBox extends React.Component {
     this.setState({
       journals: this.state.journals.concat([journal])
     });
-  }
-
-  _fetchJournals() {
-
-    this.state.journals = [
-      {
-        "id": "1",
-        "title": "My Journal Title 1",
-        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
-        "category": "Travel"
-      },
-      {
-        "id": "2",
-        "title": "My Journal Title 2",
-        "entry": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.",
-        "category": "Travel"
-      }
-    ]
   }
 }
 
@@ -266,7 +245,8 @@ class JournalList extends React.Component {
         <ul className="list-group list-group-flush">
           {journals.map((journal) =>
             <Journal
-              key={journal.id}
+              key={journal._id}
+              journalId={journal._id}
               title={journal.title}
               category={journal.category}
               entry={journal.entry} />
