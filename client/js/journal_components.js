@@ -132,7 +132,7 @@ class JournalAddEntryModal extends React.Component {
   render() {
       console.log("RENDER JOURNAL ENTRY MODAL");
     return(
-      <div class="modal fade" id="addEntryModal" tabindex="-1" role="dialog" aria-labelledby="AddEntryModalLabel" aria-hidden="true">
+      <div className="modal fade" id="addEntryModal" tabIndex="-1" role="dialog" aria-labelledby="AddEntryModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content">
                   <div className="modal-header">
@@ -209,7 +209,7 @@ class JournalAddEntryModal extends React.Component {
 class JournalOpenEntryModal extends React.Component {
   render() {
     return(
-      <div class="modal modal-ku fade" id="viewEntry" tabindex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
+      <div className="modal modal-ku fade" id="viewEntry" tabIndex="-1" role="dialog" aria-labelledby="ViewEntryModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
               <div className="modal-content ">
                   <div className="modal-header">
@@ -239,7 +239,7 @@ class JournalOpenEntryModal extends React.Component {
                         <div className="form-group">
                             <label htmlFor="editEntry">Body</label>
                             <textarea className="form-control edit-body" rows="10" id="editEntry">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam tempor vestibulum. Curabitur vel purus ac nisi rutrum bibendum. Mauris nisl sapien, ornare eu maximus quis , porta sed est. Fusce ut tortor ac dolor tempor interdum quis sit amet odio. Integer rhoncus eleifend lorem non tempor. Integer tristique, ante non gravida bibendum, magna turpis sollicitudin arcu, ut viverra felis magna et erat. Nunc ultrices augue in venenatis elementum.
+
                             </textarea>
                         </div>
                     </form>
@@ -287,7 +287,7 @@ class Journal extends React.Component {
   render() {
     return(
       <li className="list-group-item">
-        <div class="card shadowed w-60" data-toggle="modal" data-target="#viewEntry">
+        <div className="card shadowed w-60" data-toggle="modal" data-target="#viewEntry">
             <h3 className="card-header mt-0">
             {this.props.title}
             </h3>
