@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/site.css" type="text/css">
     <link rel="stylesheet" href="css/journal.css" type="text/css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" type="text/css">
@@ -28,42 +29,29 @@
 </head>
 
 <body>
+    <div id="overlay" > </div>
     <header>
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Quill</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Journal <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Gaius Ambion</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <h1>Quill</h1>
+        <nav>
+            <ul>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="#">Gaius Ambion</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div id="journal_box" class="container w-75 mx-auto">
-    </div>
+    <div id="journal_box"></div>
 
 
     <!--Footer-->
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Copyright Quill 2017. All Rights Reserved.</span>
-      </div>
+    <footer>
+        Copyright Quill 2017. All Rights Reserved.
     </footer>
 
 
     <!--JAVASCRIPT-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
     <script src="js/react.js"></script>
     <script src="js/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -71,20 +59,34 @@
 
     <script>
         $(document).ready(function() {
-            $(".closeModal").click(function() {
-                $("#addEntryModal").modal('hide');
-                $("#viewEntry").modal('hide');
-                console.log("Modal Close");
+
+            $("#overlay").hide();
+
+            $("#addEntry").click(function() {
+                $("#overlay").show();
+                $("#addEntryModal").show();
+                console.log("Modal Launch");
             });
+
             $(".close").click(function() {
                 $("#addEntryModal").hide();
-                $("#viewEntry").modal('hide');
+                $("#overlay").hide();
+                $("#viewEntry").hide();
                 console.log("Modal Close");
             });
+
+            $(".closeModal").click(function() {
+                $("#addEntryModal").hide();
+                $("#viewEntry").hide();
+                $("#overlay").hide();
+                console.log("Modal Close");
+            });
+
             $(".shadowed").click(function() {
+                $("#overlay").show();
+                $("#viewEntry").show();
                 console.log("Card Clicked");
             });
-            $(".")
         });
     </script>
 
